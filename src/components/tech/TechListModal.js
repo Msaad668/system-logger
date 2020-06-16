@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import TechItem from "./TechItem";
+import { connect } from "react-redux";
+import { getTechs } from "../../actions/techActions";
 
-const TechListModal = () => {
-  const [techs, setTechs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    getTechs();
-  }, []);
-
-  const getTechs = async () => {
-    setLoading(true);
-    const res = await fetch("/techs");
-    const data = await res.json();
-
-    setTechs(data);
-    setLoading(false);
-  };
+const TechListModal = ({ techs, loading, getTechs }) => {
+  // useEffect(() => {
+  //   getTechs();
+  // }, [getTechs]);
 
   return (
     <div id="tech-list-modal" className="modal">
@@ -26,6 +16,7 @@ const TechListModal = () => {
             <h4>all technicians</h4>
           </li>
           {!loading &&
+            techs !== null &&
             techs.map((tech) => <TechItem key={tech.id} tech={tech} />)}
         </ul>
       </div>
@@ -38,4 +29,9 @@ const TechListModal = () => {
   );
 };
 
-export default TechListModal;
+const mapStateToProps = (state) => ({
+  techs: state.tech.techs,
+  loading: state.tech.loading,
+});
+
+export default connect(mapStateToProps, { getTechs })(TechListModal);

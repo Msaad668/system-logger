@@ -1,6 +1,12 @@
 import React from "react";
+import { getTechs } from "../../actions/techActions";
+import { connect } from "react-redux";
 
-const AddBtn = () => {
+const AddBtn = ({ getTechs }) => {
+  const onClickHandler = () => {
+    getTechs();
+  };
+
   return (
     <div className="fixed-action-btn">
       <a
@@ -14,6 +20,7 @@ const AddBtn = () => {
           <a
             href="#tech-list-modal"
             className="btn-floating green modal-trigger"
+            onClick={onClickHandler}
           >
             <i className="material-icons">person</i>
           </a>
@@ -28,4 +35,4 @@ const AddBtn = () => {
   );
 };
 
-export default AddBtn;
+export default connect(null, { getTechs })(AddBtn);
