@@ -8,11 +8,11 @@
       "id": 1
     },
     {
-      "id": 2,
-      "message": "Fixed hard drive on workstation 002",
-      "attention": false,
+      "message": "hello boy how are you",
+      "attention": true,
       "tech": "John Doe",
-      "date": "2019-05-31T16:18:04.245Z"
+      "date": 1592331944786,
+      "id": 2
     }
   ],
   "techs": [
