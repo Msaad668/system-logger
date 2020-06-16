@@ -1,18 +1,25 @@
 {
   "logs": [
     {
-      "message": "Changed network card in server 007",
-      "attention": false,
-      "tech": "Sam Smith",
-      "date": "2019-05-31T15:46:10.179Z",
-      "id": 1
-    },
-    {
       "message": "hello boy how are you",
       "attention": true,
       "tech": "John Doe",
       "date": 1592331944786,
       "id": 2
+    },
+    {
+      "message": "hello boy how are you i hope you are okay",
+      "attention": true,
+      "tech": "John Doe",
+      "date": 1592333331590,
+      "id": 3
+    },
+    {
+      "message": "007 problem",
+      "attention": true,
+      "tech": "Sam Smith",
+      "date": 1592333353109,
+      "id": 4
     }
   ],
   "techs": [
