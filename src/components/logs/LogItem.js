@@ -1,8 +1,9 @@
 import React from "react";
+import Moment from "react-moment";
 
 const LogItem = ({ log }) => {
   return (
-    <li class="collection-item">
+    <li className="collection-item">
       <div>
         <a
           href="#edit-modal-trigger"
@@ -16,8 +17,12 @@ const LogItem = ({ log }) => {
         <span className="grey-text">
           <span className="black-text">#{log.id}</span>{" "}
           <span>last updated by </span>{" "}
-          <span className="black-text">{log.tech}</span>
+          <span className="black-text">{log.tech}</span> on{" "}
+          <Moment format="MMMM Do YYY, h:mm:ss a">{log.date}</Moment>
         </span>
+        <a href="#delete" className="secondary-content">
+          <i className="material-icons grey-text">delete</i>
+        </a>
       </div>
     </li>
   );
