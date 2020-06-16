@@ -1,7 +1,12 @@
-const { SET_LOADING, GET_TECHS, TECHS_ERROR, LOGS_ERROR } = require("./types");
+const {
+  SET_LOADING,
+  GET_TECHS,
+  TECHS_ERROR,
+  ADD_TECH,
+  DELETE_TECH,
+} = require("./types");
 
 // adding new technician
-export const addTech = (tech) => async (dispatch) => {};
 
 //getting techs
 export const getTechs = () => async (dispatch) => {
@@ -19,6 +24,51 @@ export const getTechs = () => async (dispatch) => {
     dispatch({
       type: TECHS_ERROR,
       payload: error.response.statusText,
+    });
+  }
+};
+//adding a tech
+export const addTech = (tech) => async (dispatch) => {
+  try {
+    setLoading();
+
+    const res = await fetch("/techs", {
+      method: "POST",
+      body: JSON.stringify(tech),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    dispatch({
+      type: ADD_TECH,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error.response,
+    });
+  }
+};
+//delete a tech
+export const deleteTech = (id) => async (dispatch) => {
+  try {
+    setLoading();
+
+    await fetch(`/techs/${id}`, {
+      method: "DELETE",
+    });
+
+    dispatch({
+      type: DELETE_TECH,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error,
     });
   }
 };

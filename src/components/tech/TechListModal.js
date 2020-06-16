@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TechItem from "./TechItem";
 import { connect } from "react-redux";
 import { getTechs } from "../../actions/techActions";
